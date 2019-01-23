@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
+    <span class="text">asdfghj</span>
     <HelloWorld msg="Welcome to Your Vue.js App"/>
   </div>
 </template>
@@ -16,3 +16,11 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+@import '../assets/styles/global.scss';
+
+.text {
+  font-size: px2rem(20);
+}
+</style>

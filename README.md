@@ -27,3 +27,10 @@ npm run lint
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+
+### web字体
+1 存放在public/fonts中
+2 存放在src/assets/fonts中
+
+### 自适应 使用rem
+
