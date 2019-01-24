@@ -47,8 +47,8 @@ github中查找使用方法
 http {
   server {
     listen       9000;
-    server_name  resouce;
-    root F:/nginx-1.14.2/resouce;
+    server_name  resource;
+    root F:/nginx-1.14.2/resource;
     autoindex on;
     location / {
         add_header Access-Control-Allow-Origin *;
