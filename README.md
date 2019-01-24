@@ -34,3 +34,26 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 ### 自适应 使用rem
 
+### vuex远程调试工具vue-devtools
+github中查找使用方法
+
+### nginx
+开启 nginx
+关闭 nginx -s stop
+重新加载 nginx -s reload
+访问地址：nginx.conf中http模块对应的server地址
+- 自己创建一个server
+```
+http {
+  server {
+    listen       9000;
+    server_name  resouce;
+    root F:/nginx-1.14.2/resouce;
+    autoindex on;
+    location / {
+        add_header Access-Control-Allow-Origin *;
+    }
+    add_header Cache-Control "no-cache, must-revalidate";
+  }
+}
+```
