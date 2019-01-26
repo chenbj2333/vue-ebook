@@ -18,13 +18,13 @@
 </template>
 
 <script>
-  export default {
-    methods: {
-      back() {
-        console.log('back');
-      }
+export default {
+  methods: {
+    back() {
+      console.log('back');
     }
   }
+};
 </script>
 
 <style lang="scss" scoped>

@@ -14,7 +14,7 @@ export default {
     EbookReader,
     EbookTitle
   }
-}
+};
 </script>
 
 <style lang="scss" scoped>
