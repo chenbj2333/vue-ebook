@@ -1,37 +1,78 @@
 <template>
-  <div id="read">
+  <div class="ebook-reader">
+    <div class="read-wrapper">
+      <div id="read"></div>
+    </div>
   </div>
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
-import Epub from 'epubjs'
+import { mapGetters } from 'vuex';
+import Epub from 'epubjs';
 
-global.ePub = Epub
+global.ePub = Epub;
 
 export default {
   computed: {
     ...mapGetters(['fileName'])
   },
   methods: {
+    prevPage() {
+      if (this.rendition) {
+        this.rendition.prev();
+      }
+    },
+    nextPage() {
+      if (this.rendition) {
+        this.rendition.next();
+      }
+    },
+    toggleMenuVisible() {
+
+    },
+    initGuest() {
+      this.rendition.on('touchstart', event => {
+        this.touchStartX = event.changedTouches[0].clientX;
+        this.touchStartTime = event.timeStamp;
+      });
+      this.rendition.on('touchend', event => {
+        this.touchEndX = event.changedTouches[0].clientX;
+        this.touchEndTime = event.timeStamp;
+        const offsetX = this.touchEndX - this.touchStartX;
+        const time = this.touchEndTime - this.touchStartTime;
+        if (time < 500 && offsetX > 40) {
+          this.prevPage();
+        } else if (time < 500 && offsetX < -40) {
+          this.nextPage();
+        } else {
+          this.toggleMenuVisible();
+        }
+        event.preventDefault();
+        event.stopPropagation();
+      });
+    },
     initEpub() {
-      const baseUrl = 'http://127.0.0.1:9000/epub/'
-      const url = `${baseUrl}${this.fileName}.epub`
-      this.book = new Epub(url)
-      this.book.renderTo('read', {
+      const baseUrl = 'http://192.168.0.101:9000/epub/';
+      const url = `${baseUrl}${this.fileName}.epub`;
+      this.book = new Epub(url);
+      this.rendition = this.book.renderTo('read', {
         width: innerWidth,
         height: innerHeight,
         method: 'default'
-      }).display()
+      });
+
+      this.rendition.display();
+      this.initGuest();
     }
   },
   mounted() {
-    const fileName = this.$route.params.fileName.split('|').join('/')
+    // const fileName = this.$route.params.fileName.split('|').join('/')
+    const fileName = 'History/2013_Book_FungalDiseaseInBritainAndTheUn';
     this.$store.dispatch('setFileName', fileName).then(() => {
-      this.initEpub()
-    })
+      this.initEpub();
+    });
   }
-}
+};
 </script>
 
 <style scoped>
