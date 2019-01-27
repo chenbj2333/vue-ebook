@@ -10,7 +10,7 @@ export default {
   props: {
     slideStyle: String
   }
-}
+};
 </script>
 
 <style lang="scss" scoped>

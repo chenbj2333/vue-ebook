@@ -21,7 +21,7 @@ export default {
       if (this.rendition) {
         this.rendition.prev();
       }
-      if(this.menuVisible) {
+      if (this.menuVisible) {
         this.hideMenuAndTitle();
       }
     },
@@ -29,7 +29,7 @@ export default {
       if (this.rendition) {
         this.rendition.next();
       }
-      if(this.menuVisible) {
+      if (this.menuVisible) {
         this.hideMenuAndTitle();
       }
     },

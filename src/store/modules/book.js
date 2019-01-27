@@ -1,4 +1,4 @@
-import * as types from './bookTypes'
+import * as types from './bookTypes';
 
 const book = {
   state: {
