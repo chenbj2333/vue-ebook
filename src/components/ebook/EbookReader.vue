@@ -21,14 +21,23 @@ export default {
       if (this.rendition) {
         this.rendition.prev();
       }
+      if(this.menuVisible) {
+        this.hideMenuAndTitle();
+      }
     },
     nextPage() {
       if (this.rendition) {
         this.rendition.next();
       }
+      if(this.menuVisible) {
+        this.hideMenuAndTitle();
+      }
     },
-    toggleMenuVisible() {
+    toggleMenuAndTitle() {
       this.$store.dispatch('setMenuVisible', !this.menuVisible);
+    },
+    hideMenuAndTitle() {
+      this.$store.dispatch('setMenuVisible', false);
     },
     initGuest() {
       this.rendition.on('touchstart', event => {
@@ -45,7 +54,7 @@ export default {
         } else if (time < 500 && offsetX < -40) {
           this.nextPage();
         } else {
-          this.toggleMenuVisible();
+          this.toggleMenuAndTitle();
         }
         event.preventDefault();
         event.stopPropagation();
