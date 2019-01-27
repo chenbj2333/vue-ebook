@@ -14,7 +14,7 @@ global.ePub = Epub;
 
 export default {
   computed: {
-    ...mapGetters(['fileName'])
+    ...mapGetters(['fileName', 'menuVisible'])
   },
   methods: {
     prevPage() {
@@ -28,7 +28,7 @@ export default {
       }
     },
     toggleMenuVisible() {
-
+      this.$store.dispatch('setMenuVisible', !this.menuVisible);
     },
     initGuest() {
       this.rendition.on('touchstart', event => {
