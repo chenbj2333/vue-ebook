@@ -1,5 +1,5 @@
 <template>
-  <slide-ainimation slideStyle="slide-up">
+  <slide-ainimation slideStyle="popup-slide-up">
     <div class="title-wrapper" v-show="menuVisible">
       <div class="left" @click="back">
         <span class="icon-back"></span>

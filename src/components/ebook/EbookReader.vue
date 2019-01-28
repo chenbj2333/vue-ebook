@@ -33,9 +33,13 @@ export default {
     },
     toggleMenuAndTitle() {
       this.setMenuVisible(!this.menuVisible);
+      if (this.settingVisible >= 0) {
+        this.setSettingVisible(-1);
+      }
     },
     hideMenuAndTitle() {
       this.setMenuVisible(false);
+      this.setSettingVisible(-1);
     },
     initGuest() {
       this.rendition.on('touchstart', event => {
