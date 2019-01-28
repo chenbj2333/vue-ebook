@@ -18,16 +18,14 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
+import { ebookMixin } from '../../utils/mixin.js';
 import SlideAinimation from '../animations/SlideAnimation';
 
 export default {
   components: {
     SlideAinimation
   },
-  computed: {
-    ...mapGetters(['menuVisible'])
-  },
+  mixins: [ ebookMixin ],
   methods: {
     back() {
       console.log('back');

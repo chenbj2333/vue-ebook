@@ -7,15 +7,13 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
+import { ebookMixin } from '../../utils/mixin.js';
 import Epub from 'epubjs';
 
 global.ePub = Epub;
 
 export default {
-  computed: {
-    ...mapGetters(['fileName', 'menuVisible'])
-  },
+  mixins: [ ebookMixin ],
   methods: {
     prevPage() {
       if (this.rendition) {
@@ -34,10 +32,10 @@ export default {
       }
     },
     toggleMenuAndTitle() {
-      this.$store.dispatch('setMenuVisible', !this.menuVisible);
+      this.setMenuVisible(!this.menuVisible);
     },
     hideMenuAndTitle() {
-      this.$store.dispatch('setMenuVisible', false);
+      this.setMenuVisible(false);
     },
     initGuest() {
       this.rendition.on('touchstart', event => {
