@@ -75,7 +75,7 @@ export default {
   mounted() {
     // const fileName = this.$route.params.fileName.split('|').join('/')
     const fileName = 'History/2013_Book_FungalDiseaseInBritainAndTheUn';
-    this.$store.dispatch('setFileName', fileName).then(() => {
+    this.setFileName(fileName).then(() => {
       this.initEpub();
     });
   }
